@@ -128,7 +128,6 @@ const cwd = process.cwd();
 		fs.readFileSync(path.join(templateDir, `package.json`), 'utf-8')
 	);
 	pkg.name = packageName || getProjectName();
-	pkg.source = `./src/index.${useTypeScript ? 'ts' : 'js'}}`;
 	write('package.json', JSON.stringify(pkg, null, 2));
 
 	console.log(
