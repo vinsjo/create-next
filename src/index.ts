@@ -14,7 +14,6 @@ import {
 	isEmpty,
 	isValidPackageName,
 	toValidPackageName,
-	matchesPatterns,
 } from './utils';
 
 const argv = minimist<{
@@ -86,8 +85,8 @@ const cwd = process.cwd();
 				},
 			}
 		);
-	} catch (err: any) {
-		console.log(err.message);
+	} catch (err: Error | unknown) {
+		console.log(err instanceof Error ? err.message : err);
 		return;
 	}
 
