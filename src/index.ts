@@ -21,6 +21,11 @@ const argv = minimist<{
 }>(process.argv.slice(2), { string: ['_'] });
 const cwd = process.cwd();
 
+const renameFiles = {
+	_gitignore: '.gitignore',
+	_eslintignore: '.eslintignore',
+};
+
 (async function main() {
 	let targetDir = formatTargetDir(argv._[0]);
 	const defaultTargetDir = 'my-next-app';
@@ -110,7 +115,9 @@ const cwd = process.cwd();
 	const write = (file: string, content?: string) => {
 		const targetPath = path.join(
 			root,
-			file === '_gitignore' ? '.gitignore' : file
+			Object.keys(renameFiles).includes(file)
+				? renameFiles[file as keyof typeof renameFiles]
+				: file
 		);
 		content
 			? fs.writeFileSync(targetPath, content)
