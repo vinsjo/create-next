@@ -1,20 +1,19 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-const RenderIf = ({
-	children,
-	condition,
-	fallback = null,
-}: {
+const RenderIf = (props: {
 	children: React.ReactNode;
 	condition: (() => boolean) | any;
 	fallback?: React.ReactNode;
 }) => {
 	const renderChildren = useMemo(
-		() => (typeof condition === 'function' ? condition() : !!condition),
-		[condition]
+		() =>
+			typeof props.condition === 'function'
+				? props.condition()
+				: !!props.condition,
+		[props]
 	);
-	return <>{renderChildren ? children : fallback || null}</>;
+	return <>{renderChildren ? props.children : props.fallback || null}</>;
 };
 
 RenderIf.propTypes = {

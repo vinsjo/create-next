@@ -4,11 +4,20 @@ import RenderIf from './RenderIf';
 
 /**
  * Only render children on client
- * @param {{children: React.ReactNode}} props
+ * @param {{children: React.ReactNode, fallback?: React.ReactNode}} props
  */
-const ClientRender = (props) => {
+const ClientRender = ({ children, fallback }) => {
 	const didMount = useDidMount();
-	return <RenderIf condition={didMount}>{props.children}</RenderIf>;
+	return (
+		<RenderIf condition={didMount} fallback={fallback}>
+			{children}
+		</RenderIf>
+	);
+};
+
+ClientRender.propTypes = {
+	children: PropTypes.node,
+	fallback: PropTypes.node,
 };
 
 export default ClientRender;
