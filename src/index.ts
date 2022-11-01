@@ -80,9 +80,12 @@ const renameFiles = {
                         isValidPackageName(dir) || 'Invalid package.json name',
                 },
                 {
-                    type: 'confirm',
+                    type: 'toggle',
                     name: 'useTypeScript',
                     message: 'Use TypeScript? ',
+                    initial: false,
+                    active: 'yes',
+                    inactive: 'no',
                 },
             ],
             {
