@@ -18,7 +18,8 @@ export const runMiddleware = (
     });
 };
 
-export const getParams = (req: NextApiRequest, key: string = 'params') => {
-    const params = req.query[key];
-    return !params ? [] : typeof params === 'string' ? [params] : [...params];
+export const getParams = (req: NextApiRequest, key: string) => {
+    if (!(key in req.params)) return [];
+    const params = req.query[key] as string | string[];
+    return Array.isArray(params) ? [...params] : [params];
 };

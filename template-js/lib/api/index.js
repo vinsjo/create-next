@@ -19,8 +19,10 @@ export const runMiddleware = (req, res, middleware) => {
 /**
  * @param {ApiRequest} req
  * @param {string} key
+ * @returns {string[]}
  */
-export const getParams = (req, key = 'params') => {
+export const getParams = (req, key) => {
+    if (!(key in req.params)) return [];
     const params = req.query[key];
-    return !params ? [] : typeof params === 'string' ? [params] : [...params];
+    return Array.isArray(params) ? [...params] : [params];
 };
