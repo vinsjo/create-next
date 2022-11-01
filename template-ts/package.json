@@ -1,29 +1,30 @@
 {
-  "name": "next-template-ts",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
-    "next": "12.3.0",
-    "prop-types": "^15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/node": "18.7.16",
-    "@types/prop-types": "^15.7.5",
-    "@types/react": "18.0.18",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.23.0",
-    "eslint-config-next": "12.3.0",
-    "typescript": "4.8.3"
-  }
+    "name": "next-template-ts",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "npx prettier --write ."
+    },
+    "dependencies": {
+        "next": "latest",
+        "prop-types": "latest",
+        "react": "latest",
+        "react-dom": "latest"
+    },
+    "devDependencies": {
+        "@types/cors": "latest",
+        "@types/node": "latest",
+        "@types/prop-types": "latest",
+        "@types/react": "latest",
+        "@types/react-dom": "latest",
+        "eslint": "latest",
+        "prettier": "latest",
+        "pretty-quick": "latest",
+        "eslint-config-next": "latest",
+        "typescript": "latest"
+    }
 }

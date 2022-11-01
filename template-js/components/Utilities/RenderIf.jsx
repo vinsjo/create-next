@@ -10,17 +10,17 @@ import PropTypes from 'prop-types';
  * }} props
  */
 const RenderIf = ({ children, condition, fallback }) => {
-	const renderChildren = useMemo(
-		() => (typeof condition === 'function' ? condition() : !!condition),
-		[condition]
-	);
-	return <>{renderChildren ? children : fallback || null}</>;
+    const renderChildren = useMemo(
+        () => (typeof condition === 'function' ? condition() : !!condition),
+        [condition]
+    );
+    return <>{renderChildren ? children : fallback || null}</>;
 };
 
 RenderIf.propTypes = {
-	children: PropTypes.node,
-	condition: PropTypes.oneOfType([PropTypes.func, PropTypes.any]),
-	fallback: PropTypes.node,
+    children: PropTypes.node,
+    condition: PropTypes.oneOfType([PropTypes.func, PropTypes.any]),
+    fallback: PropTypes.node,
 };
 
 export default RenderIf;

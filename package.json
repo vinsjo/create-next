@@ -1,43 +1,48 @@
 {
-  "name": "@vinsjo/create-next",
-  "version": "1.0.4",
-  "description": "Scaffold a next.js app with my preferred starting setup, based on create-vite: https://github.com/vitejs/vite/tree/main/packages/create-vite",
-  "author": "Vincent Sjögren",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vinsjo/create-next"
-  },
-  "type": "module",
-  "main": "index.js",
-  "bin": "index.js",
-  "files": [
-    "index.js",
-    "template-ts",
-    "template-js",
-    "dist"
-  ],
-  "scripts": {
-    "build": "npx unbuild -y",
-    "prepublishOnly": "npm run build",
-    "lint": "npx eslint src --ext .ts"
-  },
-  "devDependencies": {
-    "@types/minimist": "^1.2.2",
-    "@types/prompts": "^2.0.14",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "eslint": "^8.23.0",
-    "kolorist": "^1.5.1",
-    "minimist": "^1.2.6",
-    "prompts": "^2.4.2",
-    "unbuild": "^0.8.10"
-  },
-  "keywords": [
-    "microbundle",
-    "npm",
-    "npx",
-    "next",
-    "react"
-  ]
+    "name": "@vinsjo/create-next",
+    "version": "1.0.4",
+    "description": "Scaffold a next.js app with my preferred starting setup, based on create-vite: https://github.com/vitejs/vite/tree/main/packages/create-vite",
+    "author": "Vincent Sjögren",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vinsjo/create-next"
+    },
+    "type": "module",
+    "main": "index.js",
+    "bin": "index.js",
+    "files": [
+        "index.js",
+        "template-ts",
+        "template-js",
+        "dist"
+    ],
+    "scripts": {
+        "build": "npx unbuild -y",
+        "prepublishOnly": "npm run build",
+        "lint": "npx eslint src --ext .ts",
+        "format": "npx prettier --write .",
+        "prepare": "husky install"
+    },
+    "devDependencies": {
+        "@types/minimist": "^1.2.2",
+        "@types/prompts": "^2.0.14",
+        "@typescript-eslint/eslint-plugin": "^5.36.2",
+        "@typescript-eslint/parser": "^5.36.2",
+        "eslint": "^8.23.0",
+        "kolorist": "^1.5.1",
+        "minimist": "^1.2.6",
+        "prettier": "^2.7.1",
+        "pretty-quick": "^3.1.3",
+        "prompts": "^2.4.2",
+        "unbuild": "^0.8.10",
+        "husky": "^8.0.0"
+    },
+    "keywords": [
+        "microbundle",
+        "npm",
+        "npx",
+        "next",
+        "react"
+    ]
 }
