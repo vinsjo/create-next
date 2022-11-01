@@ -22,7 +22,7 @@
         "prepublishOnly": "npm run build",
         "lint": "npx eslint src --ext .ts",
         "format": "npx prettier --write .",
-        "prepare": "husky install"
+        "prepare": "npx husky install"
     },
     "devDependencies": {
         "@types/minimist": "^1.2.2",
