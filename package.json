@@ -1,6 +1,6 @@
 {
     "name": "@vinsjo/create-next",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Scaffold a next.js app with my preferred starting setup, based on create-vite: https://github.com/vitejs/vite/tree/main/packages/create-vite",
     "author": "Vincent Sjögren",
     "license": "MIT",
