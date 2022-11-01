@@ -55,13 +55,16 @@ const renameFiles = {
                         !fs.existsSync(targetDir) ||
                         isEmpty(targetDir)
                             ? null
-                            : 'confirm',
+                            : 'toggle',
                     message: () =>
                         (targetDir === '.'
                             ? 'Current directory'
                             : `Target directory "${targetDir}"`) +
                         ` is not empty. Remove existing files and continue? `,
                     name: 'overwrite',
+                    initial: false,
+                    active: 'yes',
+                    inactive: 'no',
                 },
                 {
                     type: (_, { overwrite }) => {
