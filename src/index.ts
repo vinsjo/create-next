@@ -35,7 +35,11 @@ const renameFiles = {
         !targetDir ? path.basename(path.resolve()) : targetDir;
 
     let result: prompts.Answers<
-        'projectName' | 'overwrite' | 'packageName' | 'useTypeScript'
+        | 'projectName'
+        | 'overwrite'
+        | 'packageName'
+        | 'useTypeScript'
+        | 'useGHAction'
     >;
     try {
         result = await prompts(
@@ -90,6 +94,14 @@ const renameFiles = {
                     active: 'yes',
                     inactive: 'no',
                 },
+                {
+                    type: 'toggle',
+                    name: 'useGHAction',
+                    message: 'Include lint/build GitHub action? ',
+                    initial: false,
+                    active: 'yes',
+                    inactive: 'no',
+                },
             ],
             {
                 onCancel: () => {
@@ -102,7 +114,7 @@ const renameFiles = {
         return;
     }
 
-    const { overwrite, packageName, useTypeScript } = result;
+    const { overwrite, packageName, useTypeScript, useGHAction } = result;
     const root = path.join(cwd, targetDir);
 
     if (overwrite) {
@@ -133,7 +145,9 @@ const renameFiles = {
 
     const files = fs.readdirSync(templateDir);
     for (const file of files) {
-        if (file === 'package.json') continue;
+        if (file === 'package.json' || (!useGHAction && file === '.github')) {
+            continue;
+        }
         write(file);
     }
 
