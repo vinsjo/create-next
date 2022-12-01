@@ -1,25 +1,18 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiHandler } from 'next';
 
-export type Middleware = (
-    req: NextApiRequest,
-    res: NextApiResponse,
-    next: (err?: any) => any
-) => void | any;
-
-export const runMiddleware = (
-    req: NextApiRequest,
-    res: NextApiResponse,
-    middleware: Middleware
-) => {
-    return new Promise((resolve, reject) => {
-        middleware(req, res, (result) =>
-            result instanceof Error ? reject(result) : resolve(result)
-        );
-    });
-};
-
-export const getParams = (req: NextApiRequest, key: string) => {
-    if (!(key in req.params)) return [];
-    const params = req.query[key] as string | string[];
-    return Array.isArray(params) ? [...params] : [params];
-};
+export function createApiHandler(handler: NextApiHandler): NextApiHandler {
+    return async (req, res) => {
+        const allowedMethods = res.getHeader('access-control-allow-methods');
+        if (
+            typeof allowedMethods === 'string' &&
+            req.method &&
+            !allowedMethods.includes(req.method)
+        ) {
+            return res
+                .status(405)
+                .json({ error: `method '${req.method}' not allowed` });
+        }
+        await handler(req, res);
+        if (!res.writableEnded) res.end();
+    };
+}
